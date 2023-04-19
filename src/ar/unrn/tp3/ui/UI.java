@@ -13,19 +13,18 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import ar.unrn.tp3.modelo.ErrorDeDatos;
-import ar.unrn.tp3.modelo.Participante;
-import ar.unrn.tp3.modelo.RepositorioParticipantes;
+import ar.unrn.tp3.modelo.Usuarios;
 
 public class UI extends JFrame {
 
-	private JTextField               nombre;
-	private JTextField               telefono;
-	private JTextField               region;
-	private RepositorioParticipantes repositorio;
+	private JTextField nombre;
+	private JTextField telefono;
+	private JTextField region;
+	private Usuarios   registro;
 
-	public UI(RepositorioParticipantes repositorio) {
+	public UI(Usuarios registro) {
 
-		this.repositorio = repositorio;
+		this.registro = registro;
 
 		setupUIComponents();
 	}
@@ -70,9 +69,13 @@ public class UI extends JFrame {
 
 	private void onBotonCargar() throws ErrorDeDatos {
 
-		Participante participante = new Participante(nombre.getText(), telefono.getText(), region.getText());
+//		Participante participante = new Participante(nombre.getText(), telefono.getText(), region.getText());
+//
+//		repositorio.registrar(participante.datos());
+		registro.nuevoRegistro(nombre.getText(), telefono.getText(), region.getText());
 
-		repositorio.registrar(participante.datos());
 	}
+
+	//
 
 }
